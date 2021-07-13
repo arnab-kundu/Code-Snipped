@@ -3,6 +3,12 @@ Room DB Implementation using kotlin
 
 build.gradle
 ============
+apply plugin: 'kotlin-kept'
+//or
+plugins {
+	...
+	id 'kotlin-kept'
+}
 
 dependencies {
 	
