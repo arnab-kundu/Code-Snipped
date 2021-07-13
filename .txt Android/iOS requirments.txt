@@ -1,0 +1,8 @@
+To enable the remoted iOS Simulator:
+
+
+	1 . Make sure Visual Studio has connected to your Mac at least once before 		starting the remoted iOS Simulator.
+
+	2. Go to Tools > Options > Xamarin > iOS Settings and tick the box for Remote 		Simulator to Windows:
+
+	3. Ensure an iOS app is the Startup Project and start debugging.

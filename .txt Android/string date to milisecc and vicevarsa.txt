@@ -1,0 +1,16 @@
+How to convert Date represented as a String to milliseconds? 
+============================================================
+String someDate = "05.10.2011";
+SimpleDateFormat sdf = new SimpleDateFormat("MM.dd.yyyy");
+Date date = sdf.parse(someDate);
+System.out.println(date.getTime());
+
+
+how to convert long date value to mm/dd/yyyy format 
+========================================================
+
+ long val = 1346524199000l;
+        Date date=new Date(val);
+        SimpleDateFormat df2 = new SimpleDateFormat("dd/MM/yy");
+        String dateText = df2.format(date);
+        System.out.println(dateText);

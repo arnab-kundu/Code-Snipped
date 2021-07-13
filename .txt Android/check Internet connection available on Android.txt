@@ -1,0 +1,24 @@
+Detect whether there is an Internet connection available on Android 
+===================================================================
+
+private boolean isNetworkAvailable() {
+    ConnectivityManager connectivityManager 
+          = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+    NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+    return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+}
+
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<uses-permission android:name="android.permission.INTERNET" />
+
+
+Enable WiFi
+=============
+
+  <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
+   startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+
+     or
+
+   startActivity(new Intent(WifiManager.ACTION_PICK_WIFI_NETWORK));

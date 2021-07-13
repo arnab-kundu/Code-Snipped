@@ -1,0 +1,13 @@
+hide keyboard if showing 
+=============================
+InputMethodManager imm = (InputMethodManager) context.getSystemService(Activity.INPUT_METHOD_SERVICE);
+                            if (imm.isAcceptingText()) {
+                               // imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+                                imm.hideSoftInputFromWindow(v.getWindowToken(),0);
+
+                            }
+
+============================================================
+correct
+
+ ((InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(view.getWindowToken(),0);

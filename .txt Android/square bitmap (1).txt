@@ -1,0 +1,10 @@
+Save Bitmap as square size
+==========================
+
+http://stackoverflow.com/questions/20990930/how-to-scale-a-large-bitmap-to-a-squared-bitmap
+
+   Bitmap output;
+    if (bitmap.getWidth() >= bitmap.getHeight())
+        output = Bitmap.createBitmap(bitmap, bitmap.getWidth() / 2 - bitmap.getHeight() / 2, 0, bitmap.getHeight(), bitmap.getHeight());
+    else
+        output = Bitmap.createBitmap(bitmap, 0, bitmap.getHeight() / 2 - bitmap.getWidth() / 2, bitmap.getWidth(), bitmap.getWidth());

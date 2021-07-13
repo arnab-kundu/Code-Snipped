@@ -1,0 +1,2 @@
+keytool -list -v -keystore C:\Users\basheers\.android\debug.keystore -alias androiddebugkey -storepass android -keypass android
+ebugkey -storepass android -keypass android

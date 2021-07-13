@@ -1,0 +1,4 @@
+Strike of text in andorid textview
+==================================
+
+tv.setPaintFlags(tv.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);

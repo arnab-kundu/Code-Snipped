@@ -1,0 +1,25 @@
+How to use Application class
+=============================
+
+
+manifest
+========
+
+  <application
+        android:name=".ApplicationClassName"
+	.....
+	......
+
+this will call Application class....
+
+
+
+Application class
+==================
+
+
+public class ApplicationClassName extends Application {
+.....
+......
+......
+}

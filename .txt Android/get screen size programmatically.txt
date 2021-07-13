@@ -1,0 +1,6 @@
+get screen size programmatically
+======================================
+
+
+int width = getWindowManager().getDefaultDisplay().getWidth();
+int height = getWindowManager().getDefaultDisplay().getHeight();

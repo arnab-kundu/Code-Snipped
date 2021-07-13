@@ -1,0 +1,66 @@
+Browse files in andorid
+=======================
+
+Browse all
+===========
+ public void BrowseImage(View view) {
+       
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        intent.setType("*/*");
+        startActivityForResult(intent,1);
+    }
+
+Browse Image
+=============
+
+  public void BrowseImage(View view) {
+       
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*");
+        startActivityForResult(intent,1);
+    }
+
+Browse jpg
+===========
+public void BrowseImage(View view) {
+       
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/jpg");
+        startActivityForResult(intent,1);
+    }
+
+Browse png
+===========
+
+public void BrowseImage(View view) {
+       
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/png");
+        startActivityForResult(intent,1);
+    }
+
+
+Browse audio
+=============
+
+ public void BrowseImage(View view) {
+       
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        intent.setType("audio/*");
+        startActivityForResult(intent,1);
+    }
+
+Browse Video
+=============
+public void BrowseImage(View view) {
+       
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        intent.setType("video/*");
+        startActivityForResult(intent,1);
+    }

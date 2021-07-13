@@ -1,0 +1,61 @@
+show password hide password
+
+public void onCheckBox(View v2)
+{
+
+
+
+    CheckBox cb = (CheckBox)this.findViewById(R.id.pass_Check);
+    EditText et1=(EditText)this.findViewById(R.id.edt_Pass);
+        if(cb.isChecked())
+        {
+        et1.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+        }
+        else 
+        {
+        et1.setInputType(129);
+        }
+
+}
+
+
+or
+
+public void onCheckBox(View v2)
+    {
+        CheckBox cb = (CheckBox)this.findViewById(R.id.checkBox);
+        cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(!b)
+                {
+                    password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
+                else
+                {
+                    password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }
+            }
+        });
+
+    }
+
+For Number password
+======================================================
+
+ boolean show = true;
+    private ImageButton showHidePasswordButton;
+
+ showHidePasswordButton = (ImageButton) findViewById(R.id.show_hide);
+
+  public void showHidePassword(View view) {
+        if (show) {
+            showHidePasswordButton.setImageResource(R.drawable.ic_visibility_white_24dp);
+            etPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD|InputType.TYPE_CLASS_NUMBER);
+            show=false;
+        }else {
+            showHidePasswordButton.setImageResource(R.drawable.ic_visibility_off_white_24dp);
+            etPassword.setInputType(InputType.TYPE_NUMBER_VARIATION_PASSWORD|InputType.TYPE_CLASS_NUMBER);
+            show=true;
+        }
+    }

@@ -1,0 +1,1 @@
+typeOf is a C# keyword that is used when you have the name of the class. It is calculated at compile time and thus cannot be used on an instance, which is created at runtime. GetType is a method of the object class that can be used on an instance.

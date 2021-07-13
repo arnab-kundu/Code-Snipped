@@ -1,0 +1,7 @@
+Android: Force EditText to remove focus?
+=======================================
+
+set it in any other view reather than edit text
+in xml......
+
+ android:focusableInTouchMode="true"

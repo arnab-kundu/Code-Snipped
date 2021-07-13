@@ -1,0 +1,77 @@
+Download image from Internet with progress Dialog and save into SD card
+========================================================================
+
+  <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+
+new NetworkTask().execute("http://photojournal.jpl.nasa.gov/jpeg/PIA15421.jpg");
+
+
+ class NetworkTask extends AsyncTask<String, Integer, Void> {
+        ProgressDialog progressDialog;
+        int count;
+        Bitmap bitmap;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = new ProgressDialog(Main2Activity.this, AlertDialog.THEME_HOLO_DARK);
+            progressDialog.setMessage("Please wait.....");
+            progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+            progressDialog.show();
+        }
+
+        @Override
+        protected Void doInBackground(String... params) {
+            try {
+                URL url = new URL(params[0]);
+                URLConnection urlConnection = url.openConnection();
+                int contentLength = urlConnection.getContentLength();
+                InputStream inputStream = urlConnection.getInputStream();
+                byte data[] = new byte[1024];
+                long total = 0;
+                while ((count = inputStream.read(data)) != -1) {
+                    total += count;
+                    // publishing the progress....
+                    // After this onProgressUpdate will be called
+                    publishProgress((int) ((total * 100) / contentLength));
+                    // writing data to file
+                    Log.d("msg", "" + count);
+                }
+                inputStream = url.openConnection().getInputStream();
+                BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
+                bitmap = BitmapFactory.decodeStream(bufferedInputStream);
+                File file = new File(Environment.getExternalStorageDirectory().getPath(), "DevelopersImage");
+                if (!file.exists()) {
+                    file.mkdir();
+                }
+                String fileName = file.getAbsolutePath() + "/" + System.currentTimeMillis() + ".jpg";
+                OutputStream outputStream = new FileOutputStream(fileName);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+                outputStream.flush();
+                outputStream.close();
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
+            progressDialog.setProgress(values[0]);
+            progressDialog.setSecondaryProgress(values[0] + 5);
+
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            progressDialog.dismiss();
+            imageView1.setImageBitmap(bitmap);
+        }
+    }

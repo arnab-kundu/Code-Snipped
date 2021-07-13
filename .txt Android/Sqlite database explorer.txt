@@ -1,0 +1,10 @@
+SQLite database
+===============
+
+Android Studio-> Device File Explorer-> Select your device-> Go to Folder
+data-> data-> com.package.name(package_name)-> databases-> your_database_name.db
+right click & save file.
+
+Open your_database.db file with https://sqliteonline.com/ website to explore and view database tables and values
+
+(Note:- Only for physical device. Emulator database is not accessable in this way)

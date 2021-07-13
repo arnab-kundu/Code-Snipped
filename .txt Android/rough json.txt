@@ -1,0 +1,4 @@
+Jsonobject jo = new Jsonobject(severresponse);
+JsonArray ja = jo.getJsonArray("arrayname")
+for(i=0;i<jsonArray.lenght();i++){
+JsonObject jsub = JsonArray.getJsonObject(i);

@@ -1,0 +1,82 @@
+ActivityLifeCycleCallbacks
+============================
+
+
+public class AmessengerApplication extends Application {
+   
+
+    public AmessengerApplication() {
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Log.d("msg", "application onCreate");
+        registerActivityLifecycleCallbacks(new MyActivityLifeCycleCallbacks());
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        Log.d("msg application", "onConfigurationChanged");
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        Log.d("msg application", "onLowMemory");
+    }
+
+    @Override
+    public void onTrimMemory(int level) {
+        super.onTrimMemory(level);
+        Log.d("msg application", "onTrimMemory");
+       
+    }
+
+    @Override
+    public void onTerminate() {
+        Log.d("msg application", "onTerminate");
+        super.onTerminate();
+    }
+
+
+    class MyActivityLifeCycleCallbacks implements Application.ActivityLifecycleCallbacks {
+
+        @Override
+        public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
+            Log.d("msg Foreground", "onActivityCreated");
+        }
+
+        @Override
+        public void onActivityStarted(Activity activity) {
+            Log.d("msg Foreground", "onActivityStarted");
+        }
+
+        @Override
+        public void onActivityResumed(Activity activity) {
+            Log.d("msg Foreground", "onActivityResumed");
+        }
+
+        @Override
+        public void onActivityPaused(Activity activity) {
+            Log.d("msg Foreground", "onActivityPaused");
+        }
+
+        @Override
+        public void onActivityStopped(Activity activity) {
+            Log.d("msg Foreground", "onActivityStopped");
+        }
+
+        @Override
+        public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
+            Log.d("msg Foreground", "onActivitySaveInstanceState");
+        }
+
+        @Override
+        public void onActivityDestroyed(Activity activity) {
+            activity.getLocalClassName();
+            Log.d("msg Foreground", "onActivityDestroyed"+ activity.getLocalClassName());
+        }
+    }
+}

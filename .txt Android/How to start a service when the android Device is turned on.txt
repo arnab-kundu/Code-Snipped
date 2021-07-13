@@ -1,0 +1,27 @@
+Add to AndroidManifest.xml:
+
+<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+<service android:name=".YourService" />
+
+<receiver android:name="com.your.package.AutoStart">  
+    <intent-filter>  
+        <action android:name="android.intent.action.BOOT_COMPLETED" />  
+    </intent-filter>  
+</receiver>
+
+
+
+Create class AutoStart.java:
+
+public class AutoStart extends BroadcastReceiver
+{
+
+    @Override
+    public void onReceive(Context context, Intent intent) 
+    {
+        Intent startServiceIntent = new Intent(context, YourService.class);
+        context.startService(startServiceIntent);       
+    }
+
+}

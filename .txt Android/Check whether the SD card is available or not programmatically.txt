@@ -1,0 +1,13 @@
+Check whether the SD card is available or not programmatically
+==============================================================
+
+Boolean isSDPresent = android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED);
+
+if(isSDPresent)
+{
+  // yes SD-card is present
+}
+else
+{
+ // Sorry
+}

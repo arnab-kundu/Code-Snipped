@@ -1,0 +1,15 @@
+open emulator from cmd
+====================
+
+goto this location first.. ${ANDROID_SDK}/tools/emulator
+open commend promt here
+
+then run this commend to see all list of emulator
+>emulator -list-avds
+
+then run this comment to open emulator
+>emulator -avd <name-of-your-emulator>
+
+
+add this path.. ${ANDROID_SDK}/tools/emulator
+to env variables to excute emulator commend from anywhere in your device note: open cmd as admin

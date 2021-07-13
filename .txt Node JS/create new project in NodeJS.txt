@@ -1,0 +1,14 @@
+Create New Project in NodeJS
+============================
+
+1.Create a folder for new Project and Open Project location folder with Visual Studio Code.
+2.Press Ctrl + ` key to open console window.Then follow the below steps.
+3.npm install -g express-generator ->
+4.express myExpressApp ->  (Note:'myExpressApp' is folder name for project module You can use any name like 'myApp'.)
+5.cd myExpressApp->
+6.npm install ->
+7.npm install ejs -> (Optional: If you want to use .ejs file to edit views files)
+8.npm start -> (Server is started in localhost with post number 3000.)
+9.Open any browser and type localhost:3000 ->
+10.To stop server press Ctrl+c -> then y -> (Srever stopped)
+11.npm install mysql -> (Optional: To use 'mysql' need to install this.)

@@ -1,0 +1,3 @@
+powercfg /batteryreport
+
+PAUSE

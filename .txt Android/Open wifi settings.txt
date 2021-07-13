@@ -1,0 +1,4 @@
+Open wifi settings in andorid
+==============================
+
+startActivity(new Intent(WifiManager.ACTION_PICK_WIFI_NETWORK)); 

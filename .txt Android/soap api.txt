@@ -1,0 +1,11 @@
+https://geoservices.tamu.edu/Services/Geocode/WebService/GeocoderService_V04_01.asmx
+
+https://secure.softwarekey.com/solo/webservices/XmlCustomerService.asmx
+
+http://wsf.cdyne.com/WeatherWS/Weather.asmx
+
+http://www.w3schools.com/xml/tempconvert.asmx
+
+http://www.webservicex.com/globalweather.asmx
+
+http://www.webservicex.net/country.asmx

@@ -1,0 +1,26 @@
+public void showToast(String msg) {
+
+        LinearLayout layout = new LinearLayout(this);
+        layout.setBackgroundResource(R.drawable.top_edittext_bg);
+
+        TextView tv = new TextView(this);
+        // set the TextView properties like color, size etc
+        tv.setTextColor(Color.BLACK);
+        tv.setTextSize(14);
+        tv.setPadding(10,5,10,5);
+
+        tv.setGravity(Gravity.CENTER_VERTICAL);
+
+        // set the text you want to show in  Toast
+        tv.setText(msg);
+
+        layout.addView(tv);
+
+        Toast toast = new Toast(this); //context is object of Context write "this" if you are an Activity
+        // Set The layout as Toast View
+        toast.setView(layout);
+
+        // Position you toast here toast position is 50 dp from bottom you can give any integral value
+        toast.setGravity(Gravity.BOTTOM, 0, 200);
+        toast.show();
+    }

@@ -1,0 +1,60 @@
+densityDpi
+==========
+
+        float density = getResources().getDisplayMetrics().density;
+        if (density == 0.75f) {
+            // LDPI
+        } else if (density >= 1.0f && density < 1.5f) {
+            // MDPI
+        } else if (density == 1.5f) {
+            // HDPI
+        } else if (density > 1.5f && density <= 2.0f) {
+            // XHDPI
+        } else if (density > 2.0f && density <= 3.0f) {
+            // XXHDPI
+        } else {
+            // XXXHDPI
+        }
+
+        String sDensity = "";
+        int densityDpi = getResources().getDisplayMetrics().densityDpi;
+
+        switch (densityDpi) {
+            case DisplayMetrics.DENSITY_LOW:
+                // LDPI
+                sDensity = "ldpi";
+                break;
+
+            case DisplayMetrics.DENSITY_MEDIUM:
+                // MDPI
+                sDensity = "mdpi";
+                break;
+
+            case DisplayMetrics.DENSITY_TV:
+            case DisplayMetrics.DENSITY_HIGH:
+                // HDPI
+                sDensity = "hdpi";
+                break;
+
+            case DisplayMetrics.DENSITY_XHIGH:
+            case DisplayMetrics.DENSITY_280:
+                // XHDPI
+                sDensity = "xhdpi";
+                break;
+
+            case DisplayMetrics.DENSITY_XXHIGH:
+            case DisplayMetrics.DENSITY_360:
+            case DisplayMetrics.DENSITY_400:
+            case DisplayMetrics.DENSITY_420:
+                // XXHDPI
+                sDensity = "xxhdpi";
+                break;
+
+            case DisplayMetrics.DENSITY_XXXHIGH:
+            case DisplayMetrics.DENSITY_560:
+                // XXXHDPI
+                sDensity = "xxxhdpi";
+                break;
+        }
+        Log.d("msg", "\nScreen Density: " + density + "\nDensityDPI" + sDensity + "\nDensityDpi:" + densityDpi);
+        Toast.makeText(this, "Screen Density: " + density + "\nDensityDPI: " + sDensity + "\nDensityDpi: " + densityDpi, Toast.LENGTH_LONG).show();

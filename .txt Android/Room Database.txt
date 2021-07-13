@@ -1,0 +1,80 @@
+Room DB Implementation using kotlin
+===================================
+
+build.gradle
+============
+
+dependencies {
+	
+    // ..other dependency code..
+
+    // Room DB
+    def room_version = "2.3.0"
+    implementation "androidx.room:room-runtime:$room_version"           // Room DB basic dependency
+    implementation "androidx.room:room-ktx:$room_version"               // Androidx Kotlin
+    //annotationProcessor "androidx.room:room-compiler:$room_version"   // Room compiler for Java
+    // or
+    kapt "androidx.room:room-compiler:$room_version"                    // Room compiler for Kotlin
+    testImplementation "androidx.room:room-testing:$room_version"       // optional - Test helpers
+    //implementation "androidx.room:room-rxjava2:$room_version"         // optional - RxJava support for Room
+    //implementation "androidx.room:room-guava:$room_version"           // optional - Guava support for Room, including Optional and ListenableFuture
+}
+
+AppDatabase.kt
+==============
+
+@Database(entities = [UserEntity::class], version = 1)
+abstract class AppDatabase : RoomDatabase() {
+
+    abstract fun userDao(): UserDao?
+}
+
+UserEntity.kt
+=============
+
+@Entity(tableName = "user", indices = [Index(value = ["email"], unique = true)])
+data class UserEntity(
+
+    @PrimaryKey
+    @ColumnInfo(name = "u_id")
+    var u_id: String,
+
+    @ColumnInfo(name = "name")
+    var name: String?,
+
+    @ColumnInfo(name = "email")
+    var email: String,
+
+    @ColumnInfo(name = "status")
+    var status: String?,
+
+    @ColumnInfo(name = "availability")
+    var availability: String,
+
+    @ColumnInfo(name = "fcm_token")
+    var fcm_token: String
+
+)
+
+UserDao.kt
+==========
+
+@Dao
+interface UserDao {
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun addNewUser(user: UserEntity)
+
+    @Query("SELECT * FROM user")
+    fun getAllUser(): LiveData<List<UserEntity>>
+
+    @Query("SELECT * FROM user where u_id=:u_id")
+    suspend fun getAllUser(u_id: String): UserEntity
+
+}
+
+Activity Implementation code
+=============================
+
+val db = Room.databaseBuilder(this, AppDatabase::class.java, Constant.DATABASE_NAME).allowMainThreadQueries().build()
+val userList: List<UserEntity> = db.UserDao().getAllUser()

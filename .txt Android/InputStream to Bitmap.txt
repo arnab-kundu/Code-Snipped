@@ -1,0 +1,7 @@
+Converting InputStream into Bitmap
+====================================
+
+	URL url = new URL(" http://photojournal.jpl.nasa.gov/jpeg/PIA15421.jpg");
+	InputStream inputStream = url.openConnection().getInputStream();
+	BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
+	Bitmap bitmap = BitmapFactory.decodeStream(bufferedInputStream);

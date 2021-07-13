@@ -1,0 +1,12 @@
+Memory management
+===================
+
+ActivityManager am = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
+        int memoryClass = am.getMemoryClass();
+        Log.v("onCreate", "memoryClass:" + Integer.toString(memoryClass));
+
+        Runtime rt = Runtime.getRuntime();
+        Log.v("onCreate", "maxMemory:" +rt.maxMemory());
+        Log.v("onCreate", "freeMemory:" + rt.freeMemory());
+        Log.v("onCreate", "totalMemory:" + rt.totalMemory());
+        Log.v("onCreate", "availableProcessors:" + rt.availableProcessors());

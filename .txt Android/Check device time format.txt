@@ -1,0 +1,10 @@
+Check device time format
+==========================================
+
+if (DateFormat.is24HourFormat(this)) {
+
+                dtf = DateTimeFormat.forPattern(getString(R.string.goal_history_date_format24));
+            } else {
+
+                dtf = DateTimeFormat.forPattern(getString(R.string.goal_history_date_format));
+            }

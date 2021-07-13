@@ -1,0 +1,5 @@
+SQlite database from device flie explorer
+data->data->com.package.name->
+detabases->sync.db right click save.
+And open with 
+https://sqliteonline.com/

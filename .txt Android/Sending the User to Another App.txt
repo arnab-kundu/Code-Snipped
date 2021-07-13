@@ -1,0 +1,11 @@
+Sending the User to Another App
+===============================
+
+Intent i = new Intent(Intent.ACTION_VIEW);
+ i.setData(Uri.parse("url"));
+ context.startActivity(i);
+
+or
+
+Uri webpage = Uri.parse("https://www.android.com");
+Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);

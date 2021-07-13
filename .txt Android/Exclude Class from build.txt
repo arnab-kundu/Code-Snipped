@@ -1,0 +1,27 @@
+Android Studio Exclude Class from build?
+============================================
+
+android {
+  compileSdkVersion 19
+  buildToolsVersion "19.0.3"
+
+  defaultConfig {
+     minSdkVersion 19
+     targetSdkVersion 19
+     packageName "org.homelab.lab"
+     testPackageName "org.homelab.lab.test"
+
+  }
+  sourceSets {
+     main {
+         java {
+             exclude '**/SomeExcludedClass.java'
+         }
+     }
+     androidTest {
+         java {
+             exclude '**/TestSomeExcludedClass.java'
+        }
+     }
+  }
+ }

@@ -1,0 +1,7 @@
+install release apk using commend line(cmd)
+c:
+cd <PATH_OF_RELEASE_APK_DIRECTORY>
+dir
+xcopy /y <RELEASE_APK_FILE_NAME>.apk C:\Users\<YOUR_USER_NAME>\AppData\Local\Android\Sdk\platform-tools
+adb install <RELEASE_APK_FILE_NAME>.apk
+PAUSE

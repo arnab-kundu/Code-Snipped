@@ -1,0 +1,25 @@
+Add delay to Alert Dialog
+=========================
+
+
+new Handler().postDelayed(new
+Runnable() {
+        @Override
+        public void run() {
+          AlertDialog.Builder builder = new     AlertDialog.Builder(
+                        MyActivity.this);
+                builder.setTitle("My title...    ");
+                builder.    setMessage("my msg..");
+                builder.     setPositiveButton("OK",
+                         new     DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,
+                                int     which) {
+                            Log.    e("info", "OK");
+                            }
+                        });
+
+                builder.show();
+        }
+    });
+        }
+}, 33000); 

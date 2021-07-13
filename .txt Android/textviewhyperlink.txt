@@ -1,0 +1,5 @@
+for textview hyperlink
+textView.setClickable(true);
+textView.setMovementMethod(LinkMovementMethod.getInstance());
+String text = "<a href='http://www.google.com'> Google </a>";
+textView.setText(Html.fromHtml(text));

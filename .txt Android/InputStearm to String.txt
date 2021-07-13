@@ -1,0 +1,13 @@
+InputStearm to String
+=======================================================
+
+public static String convertStreamToStringOld(InputStream inputStream) throws IOException {
+        
+	BufferedReader r = new BufferedReader(new InputStreamReader(inputStream));
+        StringBuilder total = new StringBuilder();
+        String line;
+        while ((line = r.readLine()) != null) {
+            total.append(line).append('\n');
+        }
+        return total.toString();
+}

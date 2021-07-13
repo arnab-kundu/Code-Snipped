@@ -1,0 +1,13 @@
+List of SVN for store code versions
+===================================
+1.Concurrent Versions System (CVS) is a program that lets a code developer save and retrieve different development versions of source code . It also lets a team of developers share control of different versions of files in a common repository of files.
+
+2.Microsoft Visual SourceSafe (VSS) is a discontinued source control program, oriented towards small software development projects. Like most source control systems, SourceSafe creates a virtual library of computer files.
+
+3.SVN is a shorthand abbreviation of the name “Subversion”. For those who have not heard of it, Subversion is a powerful open-source version control system that is typically used to manage the collections of files that make up software projects.
+
+4.perforce 
+
+5.Git(Github Cloud base)
+
+6.BitBucket(Cloud base)

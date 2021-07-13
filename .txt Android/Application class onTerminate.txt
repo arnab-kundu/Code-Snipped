@@ -1,0 +1,9 @@
+Application class, onTerminate() call
+========================================
+
+
+This might be related to the fact that although you exit the application, the process for it is still running in the background so that restarting the application would use the same process.
+
+Also the javadocs states not to rely on the onTerminate code to be called.
+
+Note: never depend on this method being called; in many cases an unneeded application process will simply be killed by the kernel without executing any application code. 

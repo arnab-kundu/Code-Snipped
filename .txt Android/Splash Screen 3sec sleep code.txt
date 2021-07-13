@@ -1,0 +1,17 @@
+Thread Sleep Code
+=================
+
+ Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(3000);
+                    startActivity(new Intent(SplashActivity.this, EmployeeActivity.class));
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        Thread thread = new Thread(runnable);
+        thread.start();

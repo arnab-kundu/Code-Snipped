@@ -1,0 +1,1 @@
+powercfg /batteryreport /output "E:\Coding Snipped txt\.bat files\battery_report.html"

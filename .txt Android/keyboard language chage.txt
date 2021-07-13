@@ -1,0 +1,15 @@
+Open Dialog box for chage language keyboard
+============================================
+
+
+
+InputMethodManager imeManager = (InputMethodManager) getApplicationContext().getSystemService(INPUT_METHOD_SERVICE);
+
+imeManager.showInputMethodPicker();
+
+
+Open all language for keyboard
+================================
+
+
+startActivity(new Intent(Settings.ACTION_INPUT_METHOD_SUBTYPE_SETTINGS));

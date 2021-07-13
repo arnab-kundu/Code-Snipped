@@ -1,0 +1,19 @@
+ 
+
+
+public String getNumber(String str){
+        str = str.replaceAll("\\D+","");
+        return str;
+    }
+
+
+
+
+===========================================
+
+
+
+ public String getDecimalNumber(String str){
+        str = str.replaceAll("[^\\.0123456789]","");
+        return str;
+    }

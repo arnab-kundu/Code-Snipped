@@ -1,0 +1,1 @@
+start kmplayer "E:\Songs\Songs\Aahatein.mp3" "E:\Songs\Songs\Tose Naina - Arijit Singh.mp3" 

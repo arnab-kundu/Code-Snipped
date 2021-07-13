@@ -1,0 +1,28 @@
+Animate a custom Dialog
+========================
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="PauseDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowAnimationStyle">@style/PauseDialogAnimation</item>
+    </style>
+
+    <style name="PauseDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/spin_in</item>
+        <item name="android:windowExitAnimation">@android:anim/slide_out_right</item>
+    </style>
+</resources>
+
+
+
+Dialog dialog = new Dialog(this, R.style.PauseDialog);
+
+// Setting the title and layout for the dialog
+dialog.setTitle(R.string.pause_menu_label);
+dialog.setContentView(R.layout.pause_menu);
+
+
+Alternatively you could set the animations the following way instead of using the Dialog constructor that takes a theme.
+
+Dialog dialog = new Dialog(this);
+dialog.getWindow().getAttributes().windowAnimations = R.style.PauseDialogAnimation;

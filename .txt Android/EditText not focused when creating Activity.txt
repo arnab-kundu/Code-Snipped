@@ -1,0 +1,28 @@
+How to make EditText not focused when creating Activity
+=======================================================
+
+http://stackoverflow.com/questions/18295802/how-to-make-edittext-not-focused-when-creating-activity
+
+You can set property of Layout like android:descendantFocusability="beforeDescendants" and android:focusableInTouchMode="true"
+
+Example:
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/mainLayout"
+  android:descendantFocusability="beforeDescendants"
+  android:focusableInTouchMode="true" >
+
+<EditText
+    android:id="@+id/password"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/changePass"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="167dp"
+    android:ems="10"
+    android:imeOptions="flagNoExtractUi"
+    android:inputType="textPassword"
+    android:maxLength="30" >
+</EditText>
+
+</RelativeLayout>

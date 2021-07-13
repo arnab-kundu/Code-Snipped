@@ -1,0 +1,23 @@
+Why extend an Application class?
+=================================
+
+Introduction:
+
+
+1.If we consider an apk file in our mobile, it is comprised of multiple useful blocks such as, Activitys, Services and others.
+
+2.These components do not communicate with each other regularly and not forget they have their own life cycle. which indicate that they may be active at one time and inactive the other moment.
+
+Requirements:
+
+1.sometimes we may require a scenario where we need to access a variable and its states across the entire Application regardless of the Activity the user is using,
+2.example is a user might need to access a variable that holds his personnel information like name that has to be accessed across the Application,
+3.we can use SQLite but creating a Cursor and closing it again and again is not good on performance,
+4.we could use Intents to pass the data but its clumsy and activity itself may not exist at a certain scenario depending on the memory-availability.
+
+Uses of Application Class:
+
+1.access to variables across the Application,
+2.you can use the Application to start certain things like analytics etc. since the application class is started before Activitys or Servicess are being run,
+3.there is a overridden method called onConfiguration() changed that is triggered when the application configuration is changed (horizontal to vertical & vice-versa),
+4.there is also a event called onLowMemory() that is triggered when the Android device is low on memory.

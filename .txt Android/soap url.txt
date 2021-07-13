@@ -1,0 +1,17 @@
+http://www.w3schools.com/xml/tempconvert.asmx
+
+==============================================
+
+http://www.webservicex.com/globalweather.asmx
+
+======================================================================
+
+https://secure.softwarekey.com/solo/webservices/XmlCustomerService.asmx
+
+=============================================================================
+
+https://apitest.authorize.net/soap/v1/Service.asmx
+
+==========================================================
+
+xml soap url
