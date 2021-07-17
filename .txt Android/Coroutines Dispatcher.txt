@@ -1,0 +1,19 @@
+CoroutineScope(Dispatchers.Main).launch {
+            val deferredString: Deferred<String> = CoroutineScope(Dispatchers.IO).async {
+                // delay(5000)
+                /**
+                 * Delay of 5 sec in (Dispatcher.IO) { } block will not crash the application.
+                 * But in (Dispatcher.Main( { } block will definitely  crash the application.
+                 * So, where ever you have possible delay in result.
+                 * Like network or Database operation, Do it in a (Dispatcher.IO) { } block.
+                 *
+                 * On the other hand:
+                 * When ever you are touching any UI component, Do it in a (Dispatcher.Main) { } block.
+                 * Touching a UI component/View in (Dispatcher.IO) { } block will definitely crash the application.
+                 * But in (Dispatcher.Main) { } block will not crash the application.
+                 */
+                fetchTimeStampDBTask()
+            }
+            val timeStampString = deferredString.await()
+            tv_db_record_count_event_table!!.text = timeStampString
+        }

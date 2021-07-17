@@ -1,0 +1,119 @@
+LiveData using RoomDB
+=====================
+
+
+Dao.kt
+======
+
+
+@Dao
+interface UserDao {
+
+    @Query("SELECT * FROM user")
+    fun getAllUserLiveData(): LiveData<List<UserEntity>>
+}
+
+
+Adapter.kt
+==========
+
+class AllUsersListAdapter() : RecyclerView.Adapter<AllUsersListAdapter.ViewHolder>() {
+
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    private val contactList: ArrayList<UserEntity> = ArrayList()
+    lateinit var ctx: Context
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.row_friend_list, parent, false)
+        ctx = parent.context
+        return ViewHolder(itemView)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        setBitmapIntoProfilePictureImageView(holder.itemView.profile_pic, contactList[position].u_id)
+        when (contactList[position].availability) {
+            AVAILABILITY.online.name -> holder.itemView.online.setImageResource(android.R.drawable.presence_online)
+            AVAILABILITY.offline.name -> holder.itemView.online.setImageResource(android.R.drawable.presence_invisible)
+            AVAILABILITY.away.name -> holder.itemView.online.setImageResource(android.R.drawable.presence_away)
+            else -> holder.itemView.online.setImageResource(android.R.drawable.presence_away)
+        }
+        holder.itemView.cardviewname.text = contactList[position].name
+        holder.itemView.cardviewaddress.text = contactList[position].status
+        holder.itemView.setOnClickListener {
+            val intent = Intent(ctx, UserDetailsActivity::class.java)
+            intent.putExtra("u_id", contactList[position].u_id)
+            ctx.startActivity(intent)
+        }
+    }
+
+    override fun getItemCount(): Int {
+        return contactList.size
+    }
+
+    /**
+     * Get the save image of corresponding user based on uId
+     * &
+     * Convert it into a bitmap object
+     * then
+     * set the bitmap into the corresponding imageView
+     *
+     * @param imageView Profile picture imageView
+     * @param uId       Users unique in Firebase Auth, Saved as uId in Firebase database.
+     */
+    private fun setBitmapIntoProfilePictureImageView(imageView: ImageView, uId: String) {
+        val bitmap = BitmapFactory.decodeFile(getCacheFilePath(context = ctx, uId))
+        imageView.setImageBitmap(bitmap)
+    }
+
+    fun setData(newData: List<UserEntity>) {
+        if (contactList.size != 0) {
+            val postDiffCallback: PostDiffCallback = PostDiffCallback(contactList, newData)
+            val diffResult = DiffUtil.calculateDiff(postDiffCallback)
+            contactList.clear()
+            contactList.addAll(newData)
+            diffResult.dispatchUpdatesTo(this)
+        } else {
+            // first initialization
+            contactList.addAll(newData)
+        }
+        notifyDataSetChanged()
+    }
+
+    internal class PostDiffCallback(val oldData: List<UserEntity>, val newData: List<UserEntity>) :
+        DiffUtil.Callback() {
+        override fun getOldListSize(): Int {
+            return oldData.size
+        }
+
+        override fun getNewListSize(): Int {
+            return newData.size
+        }
+
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldData[oldItemPosition].u_id === newData[newItemPosition].u_id
+        }
+
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldData[oldItemPosition].equals(newData[newItemPosition])
+        }
+
+    }
+
+}
+
+
+Activity.kt
+===========
+
+
+class YourActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+	
+	val db : AppDatabase = Room.databaseBuilder(this, AppDatabase::class.java, Constant.DATABASE_NAME).allowMainThreadQueries().build()
+	val adapter: AllUsersListAdapter = AllUsersListAdapter()
+        rv_all_users_list.layoutManager = LinearLayoutManager(this)
+        rv_all_users_list.adapter = adapter
+        db.userDao().getAllUserLiveData().observe(this, Observer { logBookList -> adapter.setData(logBookList) })
+
+}
