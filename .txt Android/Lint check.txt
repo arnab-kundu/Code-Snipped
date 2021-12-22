@@ -1,0 +1,9 @@
+Lint check
+==========
+
+Steps:
+1. Open Terminal in android studio
+2. C:\Users\<your_username>\AndroidStudioProjects\your_project_directory_name>
+3. run `gradlew clean check assembleRelease`
+4. After 100% complete an <your_lint_report.html> file will be generated in build folder
+5. Checkout <your_lint_report.html> file to find all lint error and warnings in android your project
