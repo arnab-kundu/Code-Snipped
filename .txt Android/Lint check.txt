@@ -7,3 +7,9 @@ Steps:
 3. run `gradlew clean check assembleRelease`
 4. After 100% complete an <your_lint_report.html> file will be generated in build folder
 5. Checkout <your_lint_report.html> file to find all lint error and warnings in android your project
+
+
+More info
+=========
+https://stackoverflow.com/questions/22850333/run-lint-when-building-android-studio-projects
+https://stackoverflow.com/questions/65479506/obsolete-custom-lint-check-from-androidx-appcompat-appcompatissueregistry-wh
