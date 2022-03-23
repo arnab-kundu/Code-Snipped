@@ -1,0 +1,14 @@
+How to add .jar/.aar files into android project
+================================================
+
+1. Copy .jar & .arr files into the libs folder.
+2. libs folder path: "C:\Users\your_username\AndroidStudioProjects\your_project_name\app\libs
+	create libs folder if already not created by AndroidSrudio IDE.
+3. Add this 2 line in build.gradle(app) file
+
+dependencies {
+	.. 	
+	implementation fileTree(dir: 'libs', include: ['*.jar'])
+    	implementation fileTree(dir: 'libs', include: ['*.aar'])
+}
+   
