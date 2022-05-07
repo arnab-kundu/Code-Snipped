@@ -1,0 +1,17 @@
+Batch command to delete all subfolders with a specific name
+==================================================
+Recursive deletion of folders starting in the folder the .bat is in:
+====================================================
+
+FOR /d /r . %d IN ("build") DO @IF EXIST "%d" rd /s /q "%d"
+
+FOR /d /r . %d IN (".gradle") DO @IF EXIST "%d" rd /s /q "%d"
+
+FOR /d /r . %d IN (".idea") DO @IF EXIST "%d" rd /s /q "%d"
+
+
+
+Delete all empty folder
+===================
+for /f "delims=" %d in ('dir /s /b /ad ^| sort /r') do rd "%d"
+

@@ -1,0 +1,52 @@
+Desired Capabilities
+====================
+{
+  "udid": "",
+  "platformName": "Android",
+  "platformVersion": "11",
+  "deviceName": "realme XT"
+}
+
+{
+  "udid": "RMX3381_11_A.10",
+  "platformName": "Android",
+  "platformVersion": "11",
+  "deviceName": "realme 8s 5G"
+}
+
+{
+  "udid": "",
+  "platformName": "Android",
+  "platformVersion": "9",
+  "deviceName": "Honor 9 Lite"
+}
+
+{
+  "udid": "AYEYGE8LHIGYH6TG",
+  "platformName": "Android",
+  "platformVersion": "10",
+  "deviceName": "realme C11",
+  "app": "C:\Users\Dell\AndroidStudioProjects\ArnabsMessenger\app\build\outputs\apk\debug\arnabsmessenger-v3.5.1(20)-debug.apk"
+  "appPackage": "com.akundu.arnabsmessenger",
+  "appActivity ": ".ui.activity.SignUpActivity"
+}
+
+{
+  "udid": "emulator-5554",
+  "platformName": "Android",
+  "platformVersion": "8.1.0"
+}
+
+{
+  "udid": "38341d3e",
+  "platformName": "Android",
+  "platformVersion": "8.1",
+  "deviceName": "Redmi"
+}
+
+{
+  "udid": "AYEYGE8LHIGYH6TG",
+  "platformName": "Android",
+  "platformVersion": "10",
+  "deviceName": "realme C11"
+}

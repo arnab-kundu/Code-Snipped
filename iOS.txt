@@ -1,0 +1,58 @@
+Run CMD+R
+Build cmd+B
+CLean project cmd+shift+A
+Quit CMD+Q
+
+Signin->automatically manage signin
+Rename project -> Identity and type -> Name(edit textbox)
+
+cmd+0 to cmd+9 
+file/git/issue/debug/etc..
+
+main code editor place
+cmd+return
+cmd+ctrl+return
+cmd_shift+return
+
+logcat and debug toggle
+shift+cmd+y
+
+object library()views
+shift+cmd+L
+
+clean console log cmd+k
+commend out code cmd+/
+
+arrange code cmd+{ & cmd+}
+
+start of the line cmd+ <-
+end of the line cmd+ ->
+
+goto
+top of the file cmd+ |^(up arrow)
+bottom of the file cmd+ down arrow
+
+line number cmd+L
+
+word by word move cursor 
+option+ ->
+option+ <-
+
+find in a file cmd+F
+undo find esc
+
+
+find whole project 
+shift+cmd+F
+
+open existing file 
+shift+cmd+ o
+
+back to previous file 
+ctrl+cmd+ back-arrow
+
+go to next file 
+ctrl+cmd+ right-arrow
+
+
+ 

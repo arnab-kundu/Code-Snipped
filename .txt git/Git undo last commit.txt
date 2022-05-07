@@ -1,0 +1,5 @@
+Git undo last commit
+=====================
+
+git reset --hard <commidId> && git clean -f
+git push -f
