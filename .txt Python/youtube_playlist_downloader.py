@@ -9,21 +9,21 @@ playlist = Playlist(youtube_playlist_link)
 
 
 # Create folder for playList
-newpath = playlist.title 
-if not os.path.exists(newpath):
-    os.makedirs(newpath)
+folderName = playlist.title + " by " + pytube.YouTube(playlist.video_urls[0]).author
+if not os.path.exists(folderName):
+    os.makedirs(folderName)
 
 
 # Downloading playlist
-print("\nDownloading playlist into '%s' Folder" % playlist.title)
+print("\nDownloading playlist into '%s' Folder" % folderName)
 print('Number of videos in playlist: %s' % len(playlist.video_urls))
 print("please wait...\n")
 
 for youtube_link in playlist.video_urls:
-  yt = pytube.YouTube(youtube_link)
+  youtube_video = pytube.YouTube(youtube_link)
   
   # output
-  print("Downloading:   ", yt.title)
+  print("Downloading:   ", youtube_video.title)
 
-  stream = yt.streams.get_highest_resolution()
-  stream.download(playlist.title)
+  stream = youtube_video.streams.get_highest_resolution()
+  stream.download(folderName)
