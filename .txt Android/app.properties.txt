@@ -1,0 +1,70 @@
+server.properties
+==================
+SERVER_IP_ADDRESS = "192.168.29.199"
+
+
+build.gradle(:app)
+====================
+
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'org.jetbrains.kotlin.plugin.serialization'
+}
+
+def propertiesFile = project.rootProject.file('server.properties')
+
+android {
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.plcoding.myapplication"
+        minSdk 21
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+
+    	Properties properties = new Properties()
+        if (propertiesFile.exists()) {
+            properties.load(propertiesFile.newDataInputStream())
+        }
+
+        resValue "string", "google_maps_key", properties.getProperty("GOOGLE_MAPS_API_KEY", "")
+
+
+    }
+
+    buildTypes {
+
+        Properties properties = new Properties()
+        if (propertiesFile.exists()) {
+            properties.load(propertiesFile.newDataInputStream())
+        } else {
+            throw IllegalStateException("File not found: server.properties")
+        }
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField "String", "SERVER_IP", properties.getProperty("SERVER_IP_ADDRESS", "")
+        }
+
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField "String", "SERVER_IP", properties.getProperty("SERVER_IP_ADDRESS", "")
+        }
+    }
+..	
+}
+
+dependencies {...}

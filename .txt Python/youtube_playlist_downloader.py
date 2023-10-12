@@ -1,3 +1,5 @@
+# python -m pip install pytube
+# python -m pip install --upgrade pytube
 import os
 from pytube import Playlist
 import pytube
@@ -5,8 +7,7 @@ import pytube
 print("Enter YouTube Playlist url:")
 # input
 youtube_playlist_link = input() 
-playlist = Playlist(youtube_playlist_link)
-
+playlist = pytube.Playlist(youtube_playlist_link)
 
 # Create folder for playList
 folderName = playlist.title + " by " + pytube.YouTube(playlist.video_urls[0]).author
@@ -27,3 +28,5 @@ for youtube_link in playlist.video_urls:
 
   stream = youtube_video.streams.get_highest_resolution()
   stream.download(folderName)
+
+print("Download Successfull !!!")
