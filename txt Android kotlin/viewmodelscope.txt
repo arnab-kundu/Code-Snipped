@@ -1,0 +1,21 @@
+viewModelScope
+==============
+
+viewModelScope.launch {
+            loading.value = LoadingEvent.Loading
+
+            kotlin.runCatching {
+                repository.getAPIResponse()
+
+            }.onSuccess {
+                event.value = OnSuccessfulServerResponse(it)
+
+            }.onFailure {
+                Log.e(TAG, "${it.message}" )
+                event.value = OnFailureServerResponse()
+                FirebaseCrashlytics.getInstance().recordException(it)
+            }
+
+        }.invokeOnCompletion {
+            loading.value = LoadingEvent.LoadingComplete
+        }

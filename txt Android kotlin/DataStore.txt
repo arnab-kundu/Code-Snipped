@@ -1,0 +1,145 @@
+UserManager
+===========
+import android.content.Context
+import androidx.datastore.preferences.preferencesKey
+import androidx.datastore.preferences.createDataStore
+import androidx.datastore.preferences.edit
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+
+
+class UserManager(context: Context) {
+
+    //Create the dataStore and give it a name same as shared preferences
+    private val dataStore = context.createDataStore(name = "user_prefs")
+
+    //Create some keys we will use them to store and retrieve the data
+    companion object {
+        val USER_AGE_KEY = preferencesKey<Int>("USER_AGE")
+        val USER_NAME_KEY = preferencesKey<String>("USER_NAME")
+    }
+
+    //Store user data
+    // refer to the data store and using edit we can store values using the keys
+    suspend fun storeUser(age: Int, name: String) {
+        dataStore.edit {
+            it[USER_AGE_KEY] = age
+            it[USER_NAME_KEY] = name
+
+            // here it refers to the preferences we are editing
+
+        }
+    }
+
+    //Create an age flow to retrieve age from the preferences
+    // flow comes from the kotlin corutine
+    val userAgeFlow: Flow<Int> = dataStore.data.map {
+        it[USER_AGE_KEY] ?: 0
+    }
+
+    //Create a name flow to retrieve name from the preferences
+    val userNameFlow: Flow<String> = dataStore.data.map {
+        it[USER_NAME_KEY] ?: ""
+    }
+
+
+}
+
+
+
+
+MainActivity
+============
+
+
+class MainActivity : AppCompatActivity() {
+
+    lateinit var etName : EditText
+    lateinit var etAge : EditText
+    lateinit var tvName : TextView
+    lateinit var tvAge : TextView
+    lateinit var saveButton : Button
+
+    lateinit var userManager: UserManager
+    var age = 0
+    var name = ""
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        etName = findViewById(R.id.et_name)
+        etAge = findViewById(R.id.et_age)
+        tvName = findViewById(R.id.tv_name)
+        tvAge = findViewById(R.id.tv_age)
+        saveButton = findViewById(R.id.btn_save)
+
+        //Get reference to our userManager class
+        userManager = UserManager(this)
+
+        buttonSave()
+        observeData()
+    }
+
+    private fun buttonSave() {
+        //Gets the user input and saves it
+        saveButton.setOnClickListener {
+            name = etName.text.toString()
+            age = etAge.text.toString().toInt()
+
+            //Stores the values
+            // Since the storeUser function of UserManager class is a suspend function
+            // So this has to be done in a couritine scope
+            GlobalScope.launch {
+                userManager.storeUser(age, name)
+            }
+        }
+    }
+
+    private fun observeData() {
+        //Updates age
+        // every time user age changes it will be observed by userAgeFlow
+        // here it refers to the value returned from the userAgeFlow function of UserManager class
+        userManager.userAgeFlow.asLiveData().observe(this, {
+            age = it
+            tvAge.text = it.toString()
+        })
+
+        //Updates name
+        // every time user name changes it will be observed by userNameFlow
+        // here it refers to the value returned from the usernameFlow function of UserManager class
+        userManager.userNameFlow.asLiveData().observe(this, {
+            name = it
+            tvName.text = it.toString()
+        })
+    }
+}
+
+build.gradle
+============
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    testImplementation 'junit:junit:4.13.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    // Preferences DataStore
+    implementation "androidx.datastore:datastore-preferences:1.0.0-alpha01"
+
+    // Lifecycle components
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+
+    // Kotlin coroutines components
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.10"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1"
+}
