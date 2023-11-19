@@ -24,3 +24,15 @@ For Chart
 =========
 npm install react-native-chart-kit
 npm install react-native-svg 
+
+Old Projects
+============
+
+npm i
+npm audit
+npm audit fix
+npm audit fix --force    	
+
+
+
+
