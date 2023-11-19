@@ -1,0 +1,26 @@
+Install required library 
+
+For React & Hooks
+=================
+npm install react 
+
+For ReactNative Componenets
+===========================
+npm install react-native
+ 
+For Navigation
+==============
+npm i @react-navigation/native
+npm i @react-navigation/native-stack
+npm i expo-status-bar
+npm i react-native-screens
+npm I react-native-safe-area-context
+
+For Database
+============
+npm install react-native-sqlite-storage
+
+For Chart
+=========
+npm install react-native-chart-kit
+npm install react-native-svg 
