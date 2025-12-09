@@ -1,0 +1,18 @@
+- connect device using usb and run
+adb devices
+adb reboot bootloader
+- device will reboot. press power + vol down /or power + vol up
+- will get some options
+fastboot flash recovery C:\Users\arnab\Downloads\recovery.img
+fastboot flash vendor_boot C:\Users\arnab\Downloads\vendor_boot.img
+
+press vol to goto recovery mode and press power btn to select
+wipe data
+
+adb sideload /home/arnab/Downloads/x86_64-playstore-ps16k-36_r07.zip
+
+it will take some time. grab a coffee.
+
+https://www.youtube.com/watch?v=9U_XqbWTmIw
+
+

@@ -1,0 +1,15 @@
+lunch --help
+list_variants
+list_releases
+list_products
+lunch `list_products`-`list_releases`-`list_variants`
+
+source build/envsetup.sh
+lunch `list_products`-`list_releases`-`list_variants`
+lunch aosp_cf_x86_64_only_phone-aosp_current-userdebug
+echo "$TARGET_PRODUCT-$TARGET_BUILD_VARIANT"
+m
+
+
+
+https://source.android.com/docs/setup/build/building

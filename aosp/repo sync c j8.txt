@@ -1,0 +1,5 @@
+repo sync -c -j8
+
+https://www.youtube.com/watch?v=_2QB52-_jxo
+
+https://source.android.com/docs/setup
