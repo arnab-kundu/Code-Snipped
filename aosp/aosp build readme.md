@@ -1,4 +1,4 @@
-### AOSP Build
+## AOSP Build
 Once you have download the repo successfully using repo sync.   
 Now, To build aosp follow below commends.   
 ```
@@ -193,6 +193,9 @@ The `m` command can handle parallel tasks with a `-jN` argument. If you don't pr
 ```
 m -j1
 ```
+
+## Final Output
+After complete the build successfully a `super.img` file will be generated in this path `../aosp15/out/target/product/vsoc_x86_64_only/super.img`
 
 
 ### Reference 
